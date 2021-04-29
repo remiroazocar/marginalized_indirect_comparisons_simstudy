@@ -55,7 +55,7 @@ maic.wrapper <- function(data.AC, data.BC, resamples) {
     # center the AC effect modifiers on the BC means
     x.EM$X1 <- x.EM$X1 - theta$mean.X1
     x.EM$X2 <- x.EM$X2 - theta$mean.X2
-    # MAIC weights estimated entropy balancing
+    # MAIC weights estimated using standard method of moments
     hat.w <- maic(X.EM=x.EM) # estimated weights
     # aess <- sum(hat.w)^2/sum(hat.w^2) # approximate effective sample size
     # fit weighted logistic regression model using glm
