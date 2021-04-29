@@ -72,7 +72,7 @@ maic.wrapper <- function(data.AC, data.BC, resamples) {
   hat.var.Delta.AC <- var(boot.object$t)
   # B vs. C marginal treatment effect from reported event counts
   hat.Delta.BC <- with(data.BC, log(y.B.sum*(N.C-y.C.sum)/(y.C.sum*(N.B-y.B.sum))))
-  # B vs. C marginal treatment effect variance using the delta method. 
+  # B vs. C marginal treatment effect variance using the delta method
   hat.var.Delta.BC <- with(data.BC, 1/y.C.sum+1/(N.C-y.C.sum)+1/y.B.sum+1/(N.B-y.B.sum))
   hat.Delta.AB <- hat.Delta.AC - hat.Delta.BC # A vs. B
   hat.var.Delta.AB <- hat.var.Delta.AC + hat.var.Delta.BC  
@@ -198,7 +198,7 @@ gcomp.bayes.wrapper <- function(data.AC, data.BC, n.chains, warmup, iters,
   hat.var.Delta.AC <- var(hat.delta.AC) # sample variance
   # B vs. C from reported aggregate event counts, e.g. in contingency table
   hat.Delta.BC <- with(data.BC, log(y.B.sum*(N.C-y.C.sum)/(y.C.sum*(N.B-y.B.sum))))
-  # B vs. C variance using the delta method. 
+  # B vs. C variance using the delta method 
   hat.var.Delta.BC <- with(data.BC, 1/y.C.sum+1/(N.C-y.C.sum)+1/y.B.sum+1/(N.B-y.B.sum))
   hat.Delta.AB <- hat.Delta.AC - hat.Delta.BC # treatment effect for A vs. B
   hat.var.Delta.AB <- hat.var.Delta.AC + hat.var.Delta.BC # A vs. B variance
@@ -261,7 +261,7 @@ mim.wrapper <- function(data.AC, data.BC, M, n.chains, warmup, iters,
   hat.var.Delta.AC <- ifelse(hat.var.Delta.AC>0, hat.var.Delta.AC, 0)
   # B vs. C from reported aggregate event counts, e.g. in contingency table
   hat.Delta.BC <- with(data.BC, log(y.B.sum*(N.C-y.C.sum)/(y.C.sum*(N.B-y.B.sum))))
-  # B vs. C variance using the delta method. 
+  # B vs. C variance using the delta method 
   hat.var.Delta.BC <- with(data.BC, 1/y.C.sum+1/(N.C-y.C.sum)+1/y.B.sum+1/(N.B-y.B.sum))
   hat.Delta.AB <- hat.Delta.AC - hat.Delta.BC # A vs. B
   hat.var.Delta.AB <- hat.var.Delta.AC + hat.var.Delta.BC  
