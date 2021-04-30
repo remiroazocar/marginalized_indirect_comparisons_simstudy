@@ -239,9 +239,9 @@ mim.wrapper <- function(data.AC, data.BC, M, n.chains, warmup, iters,
   # tratment assignment in synthesis 
   trt_star <- c(rep(1,N_active), rep(0,N_control)) 
   x_star$trt <- trt_star
-  ## ANALYSIS stage
   # outcome prediction - binary responses drawn from posterior predictive dist.
-  y_star <- posterior_predict(outcome.model, newdata=x_star) 
+  y_star <- posterior_predict(outcome.model, newdata=x_star)
+  ## ANALYSIS stage
   # second stage regression (marginal structural model) on each synthesis
   reg2.fits <- lapply(1:M, function(m) glm(y_star[m,]~trt_star, family=binomial))
   # fitted treatment coefficient is marginal effect for A vs. C in m-th synthesis
