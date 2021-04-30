@@ -212,7 +212,7 @@ mim.wrapper <- function(data.AC, data.BC, M, n.chains, warmup, iters,
   # M - number of syntheses; n.chains, burnin, iters - MCMC info
   # N_star - size of synthetic datasets (high for small Monte Carlo error)
   # allocation - treatment allocation in synthetic dataset (1/2 is 1:1)
-  ## MCMC SYNTHESIS STAGE 
+  ## SYNTHESIS STAGE 
   # matrix of pairwise correlations between IPD covariates  
   rho <- cor(data.AC[,c("X1","X2","X3","X4")]) 
   #  covariate simulation for comparator trial using copula package
