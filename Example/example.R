@@ -272,12 +272,12 @@ reg2.fits <- lapply(1:M, function(m) glm(y_star[m,]~trt_star,
 # treatment coefficient is marginal effect for A vs. C in m-th synthesis
 hats_delta_AC <- unlist(lapply(reg2.fits, 
                                function(fit) coef(fit)["trt_star"][[1]]))         
-# estimated point variances for A vs. C
+# point estimates of the variance for A vs. C
 hats_v <- unlist(lapply(reg2.fits, 
                         function(fit) vcov(fit)["trt_star", "trt_star"]))
 # quantities originally defined by Rubin (1987) for multiple imputation
 bar_delta_AC <- mean(hats_delta_AC) # average of point estimates 
-bar_v <- mean(hats_v) # within variance (average of point variances)
+bar_v <- mean(hats_v) # within variance (average of point estimates of the variance)
 # between variance (sample variance of point estimates)
 b <- var(hats_delta_AC) 
 # pooling + indirect comparison (combining rules)
