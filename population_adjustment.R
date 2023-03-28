@@ -242,7 +242,7 @@ mim.wrapper <- function(data.AC, data.BC, M, n.chains, warmup, iters,
   # outcome prediction - binary responses drawn from posterior predictive dist.
   y_star <- posterior_predict(outcome.model, newdata=x_star)
   ## ANALYSIS stage
-  # second stage regression (marginal structural model) on each synthesis
+  # second stage regression on each synthesis
   reg2.fits <- lapply(1:M, function(m) glm(y_star[m,]~trt_star, family=binomial))
   # fitted treatment coefficient is marginal effect for A vs. C in m-th synthesis
   hats_delta_AC <- unlist(lapply(reg2.fits, function(fit) coef(fit)["trt_star"][[1]]))         
@@ -354,4 +354,4 @@ for(i in 1:scenarios) {
 }
 
 stopCluster(cluster)
-
+                                      
